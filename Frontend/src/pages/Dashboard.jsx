@@ -9,6 +9,14 @@ export default function Dashboard() {
   const [assignments, setAssignments] = useState([]);
   const navigate = useNavigate();
 
+  const [filterData, setFilterData] = useState("");
+
+  const data = [...assignments];
+
+  const filteredData = data.filter(
+    (item) => filterData === "" || item.difficulty === filterData,
+  );
+
   const handleAttempt = (id) => {
     navigate(`/assignmentDetails/${id}`);
   };
@@ -18,7 +26,7 @@ export default function Dashboard() {
       .then((data) => data.json())
       .then((res) => setAssignments(res.allAssignments));
   }, []);
-  
+
   console.log(assignments);
   return (
     <>
@@ -26,42 +34,39 @@ export default function Dashboard() {
       <section className="assignments-container">
         <div className="assignment-header">
           <input type="text" placeholder="search..." />
-          <select>
-            <option value="">filter</option>
+
+          <select
+            value={filterData}
+            onChange={(e) => setFilterData(e.target.value)}>
+            <option value="">All</option>
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>
-            <option value="Hard">Hard</option>
+            <option value="hard">Hard</option>
           </select>
         </div>
 
         <div className="assignment-list">
           {assignments &&
-            assignments.map((a) => (
-            
+            filteredData.map((a) => (
               <div className="assignment-card" key={a._id}>
-                
                 <h3 className="assignment-title">{a.title}</h3>
 
-                
+                <p
+                  className={
+                    a.difficulty === "easy"
+                      ? "tag easy"
+                      : a.difficulty === "medium"
+                        ? "tag medium"
+                        : "tag hard"
+                  }>
+                  {a.difficulty}
+                </p>
 
-                  <p
-                    className={
-                      a.difficulty === "easy"
-                        ? "tag easy"
-                        : a.difficulty === "medium"
-                          ? "tag medium"
-                          : "tag hard"
-                    }>
-                    {a.difficulty}
-                  </p>
-
-                  <button
-                    className="attempt-btn"
-                    onClick={() => handleAttempt(a._id)}>
-                    Attempt
-                  </button>
-
-                
+                <button
+                  className="attempt-btn"
+                  onClick={() => handleAttempt(a._id)}>
+                  Attempt
+                </button>
               </div>
             ))}
         </div>

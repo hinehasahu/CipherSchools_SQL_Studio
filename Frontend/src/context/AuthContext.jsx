@@ -7,6 +7,8 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const [showHint, setShowHint] = useState("");
+
   const API = "http://localhost:3000/api";
 
   useEffect(() => {
@@ -65,11 +67,34 @@ export const AuthProvider = ({ children }) => {
     localStorage.clear();
   };
 
-  token ? console.log("Token available") : console.log("No token")
+  const handleshowHint = (question) => {
+    fetch(`${API}/gethint/hint`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ question }),
+    })
+      .then((data) => data.json())
+      .then((res) => setShowHint(res.hint));
+  };
+console.log("Hint",showHint)
+  token ? console.log("Token available") : console.log("No token");
 
   return (
     <AuthContext.Provider
-      value={{ user, token, API, login, signup, logout, loading }}>
+      value={{
+        user,
+        token,
+        API,
+        login,
+        signup,
+        logout,
+        handleshowHint,
+        showHint,
+        loading,
+      }}>
       {children}
     </AuthContext.Provider>
   );
