@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: [
-      "https://cipherssqlstudio.netlify.app/",
+      "https://cipherssqlstudio.netlify.app",
       "http://localhost:5173",
       "http://localhost:5174",
     ],
