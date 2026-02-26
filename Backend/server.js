@@ -16,7 +16,11 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://cipherssqlstudio.netlify.app/",
+    origin: [
+      "https://cipherssqlstudio.netlify.app/",
+      "http://localhost:5173",
+      "http://localhost:5174",
+    ],
     credentials: true,
   }),
 );
