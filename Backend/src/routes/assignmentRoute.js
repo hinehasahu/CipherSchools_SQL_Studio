@@ -3,7 +3,7 @@ const {
   getAssignments,
   addAssignments,
   getAssignmentById,
-} = require("../controllers/AssignmentController");
+} = require("../controllers/assignmentController");
 const authMiddleware = require("../middlewares/authMiddleware");
 
 const AssignmentRouter = express.Router();
