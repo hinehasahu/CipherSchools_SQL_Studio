@@ -1,0 +1,42 @@
+
+$primary: #85bff5;
+$secondary: #1362bd;
+$success: #07a03f;
+$danger: #bf1818;
+
+$easy: #0e7e37;
+$medium: #d18a0f;
+$hard: #bf1818;
+
+$bg: #f9fafb;
+$card: #ffffff;
+$text: #000000;
+$text-light: #6b7280;
+
+$border: #e5e7eb;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Inter, sans-serif;
+}
+
+body {
+    background: $bg;
+    color: $text;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+}
+
+input {
+    outline: none;
+    border: 1px solid $border;
+}
+
+.no-underline-link{
+    text-decoration: none;
+}

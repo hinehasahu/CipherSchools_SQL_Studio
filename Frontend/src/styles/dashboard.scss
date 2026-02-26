@@ -1,0 +1,98 @@
+@import "./App.scss";
+
+.assignments-container {
+    padding: 30px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.assignment-header {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    input {
+        padding: 10px;
+        border-radius: 6px;
+    }
+
+    select {
+        padding: 10px 15px;
+        background: white;
+        border: 1px solid $border;
+        border-radius: 6px;
+
+        &:hover {
+            background: $bg;
+        }
+    }
+
+}
+
+.assignment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.assignment-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid $border;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+.assignment-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: $text;
+}
+
+.assignment-tag-btn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tag {
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+
+    &.easy {
+        color: $easy;
+        border: 1px solid $easy
+    }
+
+    &.medium {
+        color: $medium;
+        border: 1px solid $medium
+    }
+
+    &.hard {
+        color: $hard;
+        border: 1px solid $medium
+    }
+}
+
+.attempt-btn {
+    padding: 8px 24px;
+    background: $secondary;
+    color: white;
+    border-radius: 6px;
+
+    &:hover {
+        background: $primary;
+    }
+}
+
