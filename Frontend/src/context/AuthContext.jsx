@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
 
   const [showHint, setShowHint] = useState("");
 
-  const API = "http://localhost:3000/api";
+  const API = "https://cipherschools-sql-studio.onrender.com/api";
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
